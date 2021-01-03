@@ -11,7 +11,7 @@ Examples on how to create attributed text is also included.
 
 ## Demonstration
 
-Here's an example of a label rendered in Figma with the right side panel inspector displaying all the attributes needed to create such as label:
+Here's an example of a label rendered in Figma with the right side panel inspector displaying all the attributes needed to create such a label:
 
 <img src="Assets/figma_example_english.png"></img>
 
