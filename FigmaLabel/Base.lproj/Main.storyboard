@@ -30,6 +30,14 @@
                                     <constraint firstAttribute="height" constant="32" id="hmi-eQ-6EL"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B1L-ds-vWt">
+                                <rect key="frame" x="25" y="532" width="40" height="32"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="MQp-1B-z1P"/>
+                                    <constraint firstAttribute="height" constant="32" id="zOX-A3-WmQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -37,6 +45,8 @@
                             <constraint firstItem="I0v-84-BTS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="0mS-Tb-dwA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="I0v-84-BTS" secondAttribute="trailing" constant="32" id="5S0-J6-Zae"/>
                             <constraint firstItem="JYJ-ub-XeU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Cb2-DX-f94"/>
+                            <constraint firstItem="B1L-ds-vWt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="UPY-cd-6g2"/>
+                            <constraint firstItem="B1L-ds-vWt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="fH5-et-IKx"/>
                             <constraint firstItem="JYJ-ub-XeU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="sBH-cU-cze"/>
                             <constraint firstItem="I0v-84-BTS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="wio-bg-MsG"/>
                         </constraints>
@@ -44,6 +54,7 @@
                     <connections>
                         <outlet property="figmaLabelOne" destination="I0v-84-BTS" id="WAJ-5f-NWX"/>
                         <outlet property="imagesContainerView" destination="JYJ-ub-XeU" id="LTv-QF-8EE"/>
+                        <outlet property="imagesContainerViewTwo" destination="B1L-ds-vWt" id="MMq-YN-lmz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -52,16 +52,25 @@ class FigmaLabel: UILabel {
         return CGFloat(numberOfLines) * height
     }
     
+    enum VerticalAlignment {
+        case top
+        case middle
+        case bottom
+    }
+    
+    /*
+     Vertical/y-axis positioning of actual text within the frame.
+     Вертикальное позиционирование текста в фрейме.
+     */
+    var verticalAlignment: VerticalAlignment = .bottom {
+        didSet {
+            updateText()
+        }
+    }
+    
     override var text: String? {
         didSet {
-            if let text = text {
-                let aText = NSMutableAttributedString(string: text)
-                let fullRange = NSRange(location: 0, length: text.utf16.count)
-                aText.addAttributes(attributes(), range: fullRange)
-                attributedText = aText
-            } else {
-                super.text = nil
-            }
+            updateText()
         }
     }
     
@@ -119,6 +128,15 @@ class FigmaLabel: UILabel {
         if let chapterSpacing = characterSpacing {
             attributes[NSAttributedString.Key.kern] = chapterSpacing
         }
+        if let linesHeight = _lineHeight {
+            var baselineOffset: CGFloat = 0.0 // Actual default
+            switch verticalAlignment {
+            case .top: baselineOffset = linesHeight / 2
+            case .middle: baselineOffset = linesHeight / 4
+            case .bottom:()
+            }
+            attributes[NSAttributedString.Key.baselineOffset] = baselineOffset
+        }
         
         let style = NSMutableParagraphStyle()
         style.alignment = textAlignment
@@ -135,6 +153,7 @@ class FigmaLabel: UILabel {
             style.paragraphSpacing = paragraphSpacing
         }
         attributes[NSAttributedString.Key.paragraphStyle] = style
+        
         return attributes
     }
     
@@ -180,6 +199,23 @@ class FigmaLabel: UILabel {
             dict = attributes()
         }
         attributedText = attributedString
+    }
+    
+}
+
+// MARK: - Private
+
+extension FigmaLabel {
+    
+    private func updateText() {
+        if let text = text {
+            let aText = NSMutableAttributedString(string: text)
+            let fullRange = NSRange(location: 0, length: text.utf16.count)
+            aText.addAttributes(attributes(), range: fullRange)
+            attributedText = aText
+        } else {
+            super.text = nil
+        }
     }
     
 }

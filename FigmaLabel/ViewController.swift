@@ -8,10 +8,13 @@ class ViewController: UIViewController {
     private var figmaLabelTwo: FigmaLabel!
     private var attributedFigmaLabel: FigmaLabel!
     
+    // "Figma design"
     @IBOutlet weak var imagesContainerView: UIView!
-    
-    // Label from a Figma design
     private var figmaLabel: FigmaLabel!
+    
+    // Vertical alignment
+    @IBOutlet weak var imagesContainerViewTwo: UIView!
+    private var verticallyAlignedFigmaLabel: FigmaLabel!
     
     // MARK: - Lifecycle
     
@@ -21,6 +24,7 @@ class ViewController: UIViewController {
         setupFigmaLabelTwo()
         setupAttributedFigmaLabel()
         setupFigmaLabel()
+        setupVerticallyAlignedFigmaLabel()
     }
     
     // MARK: - Test demonstrations setup
@@ -113,6 +117,30 @@ class ViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: imagesContainerView, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item: label, attribute: .left, relatedBy: .equal, toItem: imagesContainerView, attribute: .right, multiplier: 1, constant: 12).isActive = true
+        NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: view, attribute: .rightMargin, multiplier: 1, constant: -24).isActive = true
+    }
+    
+    private func setupVerticallyAlignedFigmaLabel() {
+        // Label
+        let label = FigmaLabel()
+        label.font = UIFont(name: "ObjectSans-Regular", size: 15) // R.swift library works better here ;) Example: R.font.objectSansRegular(size: 17.scale)
+        label.lineHeight = 32
+        label.textColor = UIColor(red: 0.087, green: 0.087, blue: 0.087, alpha: 1)
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.text = "This is a vertically aligned attributed label. 'verticalAlignment' property is set to '.top' & 'lineHeight' is set to 32"
+        label.backgroundColor = .gray
+        label.verticalAlignment = .top
+        view.addSubview(label)
+        verticallyAlignedFigmaLabel = label
+        
+        figmaLabelAttributionExample(label, boldHighlights: ["vertically aligned", "verticalAlignment", "lineHeight"])
+        
+        // Constraints
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: imagesContainerViewTwo, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        
+        NSLayoutConstraint(item: label, attribute: .left, relatedBy: .equal, toItem: imagesContainerViewTwo, attribute: .right, multiplier: 1, constant: 12).isActive = true
         NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: view, attribute: .rightMargin, multiplier: 1, constant: -24).isActive = true
     }
     
